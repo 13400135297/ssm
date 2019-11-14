@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ <!-- namespace指定和哪个Mapper映射器接口对应 -->
+<mapper namespace="cn.xdl.dao.SubjectDao">
+   <select id="findAll" resultMap="subjectMap">
+   		select id,name,directionId from subject order by id
+   </select>
+   <!-- 可以解决实体类和数据库类名不一样的问题 -->
+   <resultMap type="cn.xdl.pojo.Subject" id="subjectMap">
+       <!-- 主键使用id标签配置映射好关系 -->
+       <id property="id" column="id"></id>
+       <!-- 其他列使用result 标签配置映射关系 -->
+       <result column="name" property="name"></result>
+       <result column="direction_id" property="directionId"></result>
+   </resultMap>
+</mapper>
